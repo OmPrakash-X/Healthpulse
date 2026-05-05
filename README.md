@@ -30,14 +30,14 @@ HealthPulse is an agentic pharmacovigilance platform that monitors Reddit, X (Tw
 ## Architecture
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│                  Next.js 16 Frontend (Port 3000)              │
-│  Landing → Dashboard → Signals → Timeline → Engines → Analytics│
-└───────────────────────────┬──────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                  Next.js 16 Frontend (Port 3000)                │
+│  Landing → Dashboard → Signals → Timeline → Engines → Analytics │
+└───────────────────────────┬─────────────────────────────────────┘
                             │ HTTP fetch (NEXT_PUBLIC_API_URL)
 ┌───────────────────────────▼──────────────────────────────────┐
-│                 FastAPI Backend (Port 8000)                    │
-│                                                               │
+│                 FastAPI Backend (Port 8000)                  │
+│                                                              │
 │  ┌─────────────┐   ┌──────────────┐   ┌───────────────────┐  │
 │  │   Routers   │   │   Engines    │   │     Pipeline      │  │
 │  │  projects   │   │  reddit      │   │  llm_router       │  │
@@ -45,9 +45,9 @@ HealthPulse is an agentic pharmacovigilance platform that monitors Reddit, X (Tw
 │  │  signals    │   │  quora       │   │  risk_scorer      │  │
 │  │  analytics  │   │  registry    │   │  signal_validator │  │
 │  │  faers      │   └──────────────┘   └───────────────────┘  │
-│  └─────────────┘                                              │
-│              APScheduler (5-min tick)                         │
-└───────────┬────────────┬──────────────┬───────────────────────┘
+│  └─────────────┘                                             │
+│              APScheduler (5-min tick)                        │
+└───────────┬────────────┬──────────────┬──────────────────────┘
             │            │              │
     ┌───────▼──┐  ┌──────▼────┐  ┌─────▼──────┐
     │ MongoDB  │  │ Groq API  │  │ OpenFDA    │
