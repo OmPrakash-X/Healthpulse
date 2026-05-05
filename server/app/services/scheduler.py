@@ -68,7 +68,17 @@ async def _run_scheduled_engines():
 
 
 def start_scheduler():
+    """Only starts the auto-scheduler if ENABLE_SCHEDULER=true in env.
+    By default it is OFF to preserve free-tier LLM API quotas.
+    Manual triggers via POST /api/engines/{id}/trigger always work regardless.
+    """
+    import os
     global _scheduler
+
+    if os.getenv("ENABLE_SCHEDULER", "false").lower() != "true":
+        print("⏸️  APScheduler disabled (ENABLE_SCHEDULER != true). Manual triggers still work.")
+        return
+
     _scheduler = AsyncIOScheduler()
     _scheduler.add_job(
         _run_scheduled_engines,
