@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+
+# Environment — never commit this
+.env
+
+# IDE
+.vscode/
+.idea/
