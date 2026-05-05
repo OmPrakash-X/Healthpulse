@@ -24,7 +24,6 @@ HealthPulse is an agentic pharmacovigilance platform that monitors Reddit, X (Tw
 14. [Dashboard Pages](#dashboard-pages)
 15. [Design System](#design-system)
 16. [Demo Flow](#demo-flow)
-17. [Evaluation Criteria](#evaluation-criteria)
 
 ---
 
@@ -573,18 +572,6 @@ For a judge walkthrough, follow this sequence:
 - Click **Trigger Ingest** on the Twitter engine
 - Watch the post count and signal count update in real-time
 
----
-
-## Evaluation Criteria
-
-| Criteria | Weight | HealthPulse Approach |
-|----------|--------|----------------------|
-| **Data Acquisition Engines** | 40% | Plugin-based architecture (`BaseEngine` → registry), 3 sources (Twitter/Quora/Reddit), configurable latency modes |
-| **Execution** | 30% | FastAPI + Motor + MongoDB Atlas, full async pipeline, APScheduler auto-ingest, all CRUD routes implemented |
-| **Presentation & UX** | 15% | Newsprint editorial dashboard, Playfair Display typography, animated ticker, responsive layout |
-| **Uniqueness** | 15% | Multi-LLM router (Groq→Gemini→Mistral), Hinglish NLP, FAERS cross-validation, **agentic URL→config onboarding** |
-
----
 
 ## Key Decisions
 
